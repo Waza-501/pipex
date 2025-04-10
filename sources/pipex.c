@@ -6,18 +6,21 @@
 /*   By: owhearn <owhearn@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/04/03 15:55:18 by owhearn       #+#    #+#                 */
-/*   Updated: 2025/04/07 16:54:23 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/04/09 14:10:45 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+#include "err_msg.h"
+#include <errno.h>
 
 int	parse_input(t_data data, char **argv, char **envp)
 {
-	data.fd1 = open(argv[1], O_RDONLY);
+	/*data.fd1 = open(argv[1], O_RDONLY);
 	data.fd2 = open(argv[4], O_RDONLY);
 	if (data.fd1 == -1 || data.fd2 == -1)
-		error_exit("haha funny can't open file");
+		exit_error("haha funny can't open file", -1);*/
+	
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -28,10 +31,12 @@ int	main(int argc, char **argv, char **envp)
 
 	if (argc != 5)
 	{
-		ft_putendl_fd("Error. Expected: ./pipex file1 cmd1 cmd2 file2", 2);
+		ft_putendl_fd(ERR_INPUT, 2);
 		exit(-1);
 	}
 	parse_input(data, argv, envp);
+	if (pipe(data.pipefd) < 0)
+		exit_error("pipe failed.");
 	return (0);
 }
 
