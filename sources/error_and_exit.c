@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/04/08 12:33:11 by owen          #+#    #+#                 */
-/*   Updated: 2025/04/15 12:46:33 by owen          ########   odam.nl         */
+/*   Updated: 2025/04/15 12:54:31 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,16 @@ int	exit_error(char *msg, int code, t_data *data)
 	if (code == 126 || code == 127)
 	{
 		ft_putendl_fd(msg, 2);
+		free(msg);
 		exit(code);
 	}
+	if (!msg)
+	{
+		perror("Error");
+		exit(errno);
+	}
 	ft_putendl_fd(msg, 2);
+	free(msg);
 	perror("Error");
 	exit(errno);
 }
