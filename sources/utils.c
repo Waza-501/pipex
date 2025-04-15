@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/04/10 17:27:48 by owen          #+#    #+#                 */
-/*   Updated: 2025/04/15 14:23:59 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/04/15 15:13:05 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,11 @@ int	exit_error(char *msg, int code, t_data *data)
 	if (!msg)
 	{
 		perror("Error");
-		exit(errno);
+		exit(-1);
 	}
 	ft_putendl_fd(msg, 2);
 	free(msg);
-	perror("Error");
-	exit(errno);
+	exit(-1);
 }
 
 t_data	init_data(void)
