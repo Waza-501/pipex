@@ -6,7 +6,7 @@
 /*   By: owhearn <owhearn@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/04/03 15:55:40 by owhearn       #+#    #+#                 */
-/*   Updated: 2025/04/14 16:42:20 by owen          ########   odam.nl         */
+/*   Updated: 2025/04/15 12:21:30 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,6 @@
 # include <stdbool.h>
 # include <fcntl.h>
 # include <stdio.h>
-
-# define ERR_126	"command not executable"
-# define ERR_127	"command not found: "
 
 typedef struct s_data
 {
