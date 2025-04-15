@@ -1,6 +1,6 @@
 NAME			:=	pipex
 CC				:=	cc
-CFLAGS			:=	-Wall -Werror -Wextra -g -fsanitize=address
+CFLAGS			:=	-Wall -Werror -Wextra
 
 LIBFT_FOLDER 	:= libraries/libft/
 LIBFT_NAME 		:= libft.a

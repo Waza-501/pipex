@@ -6,7 +6,7 @@
 /*   By: owhearn <owhearn@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/04/03 15:55:40 by owhearn       #+#    #+#                 */
-/*   Updated: 2025/04/15 12:21:30 by owen          ########   odam.nl         */
+/*   Updated: 2025/04/15 12:43:08 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_data
 void		child_1(t_data *data, char *file, char **envp);
 void		child_2(t_data *data, char *file, char **envp);
 t_data		init_data(void);
-int			exit_error(char *msg, int code);
+void		free_data(t_data *data);
+int			exit_error(char *msg, int code, t_data *data);
 
 #endif
