@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/04/10 12:19:50 by owen          #+#    #+#                 */
-/*   Updated: 2025/04/15 15:26:27 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/04/15 15:58:19 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,11 @@ void	set_cmd_path(t_data *data, char **cmd, char **copy)
 		exit_error(ft_strjoin(copy[0], ERR_127), 127, data);
 }
 
+/*The function child_1 sets up the first child process in a pipeline.
+It opens the input file, finds the correct path to the command,
+and redirects the file to standard input and the pipe to standard output.
+Then it runs the command using execve. If anything goes wrong along the way,
+it exits with an error.*/
 void	child_1(t_data *data, char *file, char **envp)
 {
 	int	fd;
