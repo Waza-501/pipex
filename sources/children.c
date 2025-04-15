@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/04/10 12:19:50 by owen          #+#    #+#                 */
-/*   Updated: 2025/04/15 16:04:43 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/04/15 17:27:59 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ int	find_valid_cmd(t_data *data, char **cmd, char *copy, int i)
 	temp = NULL;
 	while (data->paths[i])
 	{
-		if (access(*cmd, F_OK) == 0)
-			return ((i + 1));
 		temp = ft_strjoin(data->paths[i], "/");
 		if (!temp)
 			exit_error(NULL, 1, data);
@@ -30,6 +28,8 @@ int	find_valid_cmd(t_data *data, char **cmd, char *copy, int i)
 		free(temp);
 		if (!*cmd)
 			exit_error(NULL, 1, data);
+		if (access(*cmd, F_OK) == 0)
+			return ((i + 1));
 		i++;
 	}
 	return (i);
