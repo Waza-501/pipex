@@ -6,7 +6,7 @@
 /*   By: owhearn <owhearn@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/04/03 15:55:18 by owhearn       #+#    #+#                 */
-/*   Updated: 2025/04/15 11:37:24 by owen          ########   odam.nl         */
+/*   Updated: 2025/04/15 11:53:54 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <errno.h>
 #include <sys/wait.h>
 
-void	get_cmds(t_data *data, char **argv)
+/*void	get_cmds(t_data *data, char **argv)
 {
 	//int		idx;
 	//char	**str;
@@ -32,7 +32,7 @@ void	get_cmds(t_data *data, char **argv)
 	data->cmd_2 = ft_strdup(data->args_2[0]);
 	//if (!data.cmd_2)
 	//	data.flags.flag_cmd_2 = true;
-}
+}*/
 
 void	parse_input(t_data *data, int argc, char **argv, char **envp)
 {
