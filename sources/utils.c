@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   error_and_exit.c                                   :+:    :+:            */
+/*   utils.c                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/04/08 12:33:11 by owen          #+#    #+#                 */
-/*   Updated: 2025/04/14 17:39:18 by owen          ########   odam.nl         */
+/*   Created: 2025/04/10 17:27:48 by owen          #+#    #+#                 */
+/*   Updated: 2025/04/14 14:13:01 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 #include "err_msg.h"
-#include <errno.h>
 
-int	exit_error(char *msg, int code)
+t_data	init_data(void)
 {
-	if (code == 126 || code == 127)
-	{
-		ft_putendl_fd(msg, 2);
-		exit(code);
-	}
-	ft_putendl_fd(msg, 2);
-	perror("Error");
-	exit(errno);
+	t_data ret;
+
+	ret.cmd_1 = NULL;
+	ret.args_1 = NULL;
+	ret.cmd_2 = NULL;
+	ret.args_2 = NULL;
+	ret.paths = NULL;
+	return (ret);
 }

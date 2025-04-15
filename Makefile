@@ -1,13 +1,16 @@
 NAME			:=	pipex
 CC				:=	cc
-CFLAGS			:=	-Wall -Werror -Wextra
+CFLAGS			:=	-Wall -Werror -Wextra -g -fsanitize=address
 
 LIBFT_FOLDER 	:= libraries/libft/
 LIBFT_NAME 		:= libft.a
 LIBFT 			:= $(addprefix $(LIBFT_FOLDER), $(LIBFT_NAME))
 
 SOURCES_DIR		:=	sources/
-SOURCES			:=	
+SOURCES			:=	children.c\
+					error_and_exit.c\
+					pipex.c\
+					utils.c\
 
 OBJECTS_DIR		:=	objects/
 OBJECTS			:= $(addprefix $(OBJECTS_DIR), $(SOURCES:.c=.o))
