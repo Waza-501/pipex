@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/04/10 12:19:50 by owen          #+#    #+#                 */
-/*   Updated: 2025/04/15 11:36:15 by owen          ########   odam.nl         */
+/*   Updated: 2025/04/15 12:17:17 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	find_valid_cmd(t_data *data, char **cmd, char *copy, int i)
 	while (data->paths[i])
 	{
 		if (access(*cmd, F_OK) == 0)
-			return (i++);
+			return ((i + 1));
 		temp = ft_strjoin(data->paths[i], "/");
 		if (!temp)
 			exit_error(NULL, 1);
@@ -68,7 +68,7 @@ void	child_1(t_data *data, char *file, char **envp)
 		exit_error(ft_strjoin(ERR_127, data->args_1[0]), 127);
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		exit_error("open dead", 1);
+		exit_error("open dead 1", 1);
 	set_cmd_path(data, &data->cmd_1);
 	if (!data->cmd_1)
 		exit_error(NULL, 1);
@@ -88,7 +88,7 @@ void	child_2(t_data *data, char *file, char **envp)
 		exit_error(ft_strjoin(ERR_127, data->args_2[0]), 127);
 	fd = open(file, O_CREAT | O_WRONLY| O_TRUNC, 0644);
 	if (fd == -1)
-		exit_error("open dead", 1);
+		exit_error("open dead 2", 1);
 	set_cmd_path(data, &data->cmd_2);
 	if (!data->cmd_2)
 		exit_error(NULL, 1);
