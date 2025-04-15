@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/04/10 17:27:48 by owen          #+#    #+#                 */
-/*   Updated: 2025/04/15 15:13:05 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/04/15 15:33:04 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 #include "err_msg.h"
 #include <errno.h>
 
-void	free_array(char **array, int i)
+void	free_array(char **array)
 {
+	int		i;
+
+	i = 0;
 	while (array[i])
 	{
 		free(array[i]);
@@ -26,19 +29,16 @@ void	free_array(char **array, int i)
 
 void	free_data(t_data *data)
 {
-	int	i;
-
-	i = 0;
 	if (data->args_1)
-		free_array(data->args_1, i);
+		free_array(data->args_1);
 	if (data->args_2)
-		free_array(data->args_2, i);
+		free_array(data->args_2);
 	if (data->cmd_1)
 		free(data->cmd_1);
 	if (data->cmd_2)
 		free(data->cmd_2);
 	if (data->paths)
-		free_array(data->paths, i);
+		free_array(data->paths);
 }
 
 int	exit_error(char *msg, int code, t_data *data)
