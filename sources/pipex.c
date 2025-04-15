@@ -6,7 +6,7 @@
 /*   By: owhearn <owhearn@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/04/03 15:55:18 by owhearn       #+#    #+#                 */
-/*   Updated: 2025/04/14 17:40:34 by owen          ########   odam.nl         */
+/*   Updated: 2025/04/15 11:37:24 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,32 +47,10 @@ void	parse_input(t_data *data, int argc, char **argv, char **envp)
 			data->paths = ft_split(&envp[i][5], ':');
 		i++;
 	}
-	/*i = 0;
-	while (data->paths[i])
-	{
-		printf("%s\n", data->paths[i]);
-		i++;
-	}*/
-	//get_cmds(data, argv);
 	data->args_1 = ft_split(argv[2], ' ');
 	data->cmd_1 = ft_strdup(data->args_1[0]);
 	data->args_2 = ft_split(argv[3], ' ');
 	data->cmd_2 = ft_strdup(data->args_2[0]);
-	/*printf("cmd1: %s cmd2: %s\n", data->cmd_1, data->cmd_2);
-	i = 0;
-	while (data->args_1[i])
-	{
-		printf("args1: %s ", data->args_1[i]);
-		i++;
-	}
-	printf("\n");
-	i = 0;
-	while (data->args_2[i])
-	{
-		printf("args1: %s ", data->args_2[i]);
-		i++;
-	}
-	printf("\n");*/
 }
 
 int	main(int argc, char **argv, char **envp)
