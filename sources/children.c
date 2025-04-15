@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/04/10 12:19:50 by owen          #+#    #+#                 */
-/*   Updated: 2025/04/15 13:05:45 by owen          ########   odam.nl         */
+/*   Updated: 2025/04/15 13:08:47 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	set_cmd_path(t_data *data, char **cmd, char **copy)
 	i = 0;
 	while (access(*cmd, X_OK) != 0 && data->paths[i])
 	{
-		i = find_valid_cmd(data, cmd, ft_strdup(copy[0]), i);
+		i = find_valid_cmd(data, cmd, copy[0], i);
 		if (data->paths[i])
 				cmd_found = true;
 	}
