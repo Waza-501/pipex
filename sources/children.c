@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/04/10 12:19:50 by owen          #+#    #+#                 */
-/*   Updated: 2025/04/15 15:58:19 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/04/15 16:01:59 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,11 @@ void	child_1(t_data *data, char *file, char **envp)
 		exit_error(NULL, 1, data);
 }
 
+/*The function child_2 sets up the second child process in a pipeline.
+It opens the output file (creating or clearing it if needed),
+finds the correct path to the second command, and redirects the pipe
+to standard input and the file to standard output.
+Then it runs the command using execve, and exits with an error if anything fails.*/
 void	child_2(t_data *data, char *file, char **envp)
 {
 	int	fd;
