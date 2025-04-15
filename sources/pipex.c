@@ -6,7 +6,7 @@
 /*   By: owhearn <owhearn@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/04/03 15:55:18 by owhearn       #+#    #+#                 */
-/*   Updated: 2025/04/15 14:23:18 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/04/15 15:37:50 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	parse_input(t_data *data, int argc, char **argv, char **envp)
 
 	i = 0;
 	if (argc != 5)
-		exit_error(ft_strdup(ERR_INPUT), -1, NULL);
+		exit_error(ft_strdup(ERR_INPUT), 1, NULL);
 	while (envp[i] && data->paths == NULL)
 	{
 		if (!ft_strncmp(envp[i], "PATH=", 5))
@@ -42,15 +42,15 @@ int	main(int argc, char **argv, char **envp)
 	data = init_data();
 	parse_input(&data, argc, argv, envp);
 	if (pipe(data.pipefd) < 0)
-		exit_error(NULL, -1, &data);
+		exit_error(NULL, 1, &data);
 	data.pid1 = fork();
 	if (data.pid1 == -1)
-		exit_error(NULL, -1, &data);
+		exit_error(NULL, 1, &data);
 	else if (data.pid1 == 0)
 		child_1(&data, argv[1], envp);
 	data.pid2 = fork();
 	if (data.pid2 == -1)
-		exit_error(NULL, -1, &data);
+		exit_error(NULL, 1, &data);
 	else if (data.pid2 == 0)
 		child_2(&data, argv[4], envp);
 	close(data.pipefd[0]);

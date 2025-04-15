@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/04/10 17:27:48 by owen          #+#    #+#                 */
-/*   Updated: 2025/04/15 15:33:04 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/04/15 15:35:49 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	exit_error(char *msg, int code, t_data *data)
 	}
 	ft_putendl_fd(msg, 2);
 	free(msg);
-	exit(-1);
+	exit(code);
 }
 
 t_data	init_data(void)
