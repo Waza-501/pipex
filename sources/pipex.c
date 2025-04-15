@@ -6,7 +6,7 @@
 /*   By: owhearn <owhearn@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/04/03 15:55:18 by owhearn       #+#    #+#                 */
-/*   Updated: 2025/04/15 12:58:02 by owen          ########   odam.nl         */
+/*   Updated: 2025/04/15 14:23:18 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,3 @@ int	main(int argc, char **argv, char **envp)
 		exit(WEXITSTATUS(status));
 	return (0);
 }
-
-/*some notes
-When the command its not found, return 127 When the command is found, but not
-executable, return 126 Remember to call WEXITSTATUS in the parent This is up to
-you but I would advise handling path commands too (like ./script.sh)
-Be careful to close all opened file descriptors.  It's usefull to only open
-fds in the child process that actually needs them (Where possible)
-
-dup>pipe>execve*/

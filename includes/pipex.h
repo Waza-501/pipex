@@ -6,7 +6,7 @@
 /*   By: owhearn <owhearn@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/04/03 15:55:40 by owhearn       #+#    #+#                 */
-/*   Updated: 2025/04/15 12:43:08 by owen          ########   odam.nl         */
+/*   Updated: 2025/04/15 14:24:30 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct s_data
 	char	**paths;
 	int		pipefd[2];
 }			t_data;
-
 
 void		child_1(t_data *data, char *file, char **envp);
 void		child_2(t_data *data, char *file, char **envp);

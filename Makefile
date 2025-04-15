@@ -8,7 +8,6 @@ LIBFT 			:= $(addprefix $(LIBFT_FOLDER), $(LIBFT_NAME))
 
 SOURCES_DIR		:=	sources/
 SOURCES			:=	children.c\
-					error_and_exit.c\
 					pipex.c\
 					utils.c\
 
@@ -16,12 +15,6 @@ OBJECTS_DIR		:=	objects/
 OBJECTS			:= $(addprefix $(OBJECTS_DIR), $(SOURCES:.c=.o))
 INCLUDE_DIR		:=	includes/
 HEADERS			:=	-I $(INCLUDE_DIR)
-
-NO_COLOR = \033[0;39m
-GREEN = \033[0;92m
-YELLOW = \033[0;93m
-BLUE = \033[0;94m
-CYAN = \033[0;96m
 
 all:		$(NAME)
 			$(info Finished compiling pipex)

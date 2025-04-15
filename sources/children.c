@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/04/10 12:19:50 by owen          #+#    #+#                 */
-/*   Updated: 2025/04/15 13:08:47 by owen          ########   odam.nl         */
+/*   Updated: 2025/04/15 14:26:44 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ int	find_valid_cmd(t_data *data, char **cmd, char *copy, int i)
 	char	*temp;
 
 	temp = NULL;
-	if (!copy)
-		exit_error(NULL, 1, data);
 	while (data->paths[i])
 	{
 		if (access(*cmd, F_OK) == 0)
@@ -29,9 +27,9 @@ int	find_valid_cmd(t_data *data, char **cmd, char *copy, int i)
 			exit_error(NULL, 1, data);
 		free(*cmd);
 		*cmd = ft_strjoin(temp, copy);
+		free(temp);
 		if (!*cmd)
 			exit_error(NULL, 1, data);
-		free(temp);
 		i++;
 	}
 	return (i);
@@ -48,14 +46,12 @@ void	set_cmd_path(t_data *data, char **cmd, char **copy)
 	{
 		i = find_valid_cmd(data, cmd, copy[0], i);
 		if (data->paths[i])
-				cmd_found = true;
+			cmd_found = true;
 	}
 	if (access(*cmd, X_OK) != 0 && cmd_found == true)
 		exit_error(ft_strjoin(copy[0], ERR_126), 126, data);
 	else if (access(*cmd, X_OK) != 0)
 		exit_error(ft_strjoin(copy[0], ERR_127), 127, data);
-	free(data->paths);
-	free(copy);
 }
 
 void	child_1(t_data *data, char *file, char **envp)
@@ -78,13 +74,14 @@ void	child_1(t_data *data, char *file, char **envp)
 	if (execve(data->cmd_1, data->args_1, envp) == -1)
 		exit_error(NULL, 1, data);
 }
+
 void	child_2(t_data *data, char *file, char **envp)
 {
 	int	fd;
 
 	if (!data->args_2 || data->cmd_2[0] == ' ')
 		exit_error(ft_strjoin(data->args_2[0], ERR_127), 127, data);
-	fd = open(file, O_CREAT | O_WRONLY| O_TRUNC, 0644);
+	fd = open(file, O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	if (fd == -1)
 		exit_error(NULL, 1, data);
 	set_cmd_path(data, &data->cmd_2, data->args_2);
